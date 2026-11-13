@@ -59,6 +59,26 @@
                     </div>
                     @error('logo') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
                 </div>
+
+                <!-- Gambar Latar Belakang Beranda -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Gambar Latar Belakang Beranda</label>
+                    <div class="flex items-center gap-5 flex-wrap">
+                        <div class="w-full sm:w-64 h-32 rounded-xl overflow-hidden bg-slate-100 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                            @if($setting->hero_bg)
+                            <img src="{{ asset('storage/' . $setting->hero_bg) }}" alt="Latar belakang beranda saat ini" class="w-full h-full object-cover">
+                            @else
+                            <i class="fas fa-image text-gray-300 text-2xl"></i>
+                            @endif
+                        </div>
+                        <div class="flex-1 min-w-48">
+                            <input type="file" name="hero_bg" accept="image/png,image/jpeg,image/webp"
+                                   class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                            <p class="text-xs text-gray-500 mt-1.5">Format JPG/PNG/WEBP, maks 4 MB. Sebaiknya rasio lebar (landscape) agar pas di bagian hero. Kosongkan untuk mempertahankan gambar saat ini.</p>
+                        </div>
+                    </div>
+                    @error('hero_bg') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
+                </div>
             </div>
         </div>
 

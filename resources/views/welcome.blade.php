@@ -196,8 +196,8 @@
     <section id="home" class="hero-bg relative overflow-hidden">
         <!-- Foto latar belakang lingkungan sekolah -->
         <div class="absolute inset-0">
-            <img src="{{ asset('storage/photos/lingkungan.jpeg') }}"
-                 alt="Lingkungan SMAN 17 Maluku Tengah"
+            <img src="{{ asset('storage/' . (\App\Models\Setting::get('hero_bg') ?: 'photos/lingkungan.jpeg')) }}"
+                 alt="Lingkungan {{ \App\Models\Setting::get('nama_singkat') }}"
                  class="w-full h-full object-cover">
             <!-- Overlay gradasi agar teks tetap kontras -->
             <div class="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-blue-950/75 to-blue-900/55"></div>

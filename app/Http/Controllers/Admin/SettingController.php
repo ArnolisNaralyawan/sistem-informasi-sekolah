@@ -29,6 +29,7 @@ class SettingController extends Controller
             'nama_singkat' => 'required|string|max:255',
             'motto' => 'nullable|string|max:255',
             'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'hero_bg' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'alamat' => 'required|string|max:1000',
             'telepon' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -51,6 +52,14 @@ class SettingController extends Controller
                 Storage::delete('public/' . $setting->logo);
             }
             $validated['logo'] = $request->file('logo')->store('settings', 'public');
+        }
+
+        // Gambar latar belakang beranda
+        if ($request->hasFile('hero_bg')) {
+            if ($setting->hero_bg) {
+                Storage::delete('public/' . $setting->hero_bg);
+            }
+            $validated['hero_bg'] = $request->file('hero_bg')->store('settings', 'public');
         }
 
         // Foto kepala sekolah

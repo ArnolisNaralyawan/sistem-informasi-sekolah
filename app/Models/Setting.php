@@ -14,6 +14,7 @@ class Setting extends Model
         'nama_singkat',
         'motto',
         'logo',
+        'hero_bg',
         'alamat',
         'telepon',
         'email',
